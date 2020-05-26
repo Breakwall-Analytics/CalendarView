@@ -28,6 +28,16 @@ import UIKit
 import EventKit
 #endif
 
+public enum DayOfWeek: Int {
+    case Sunday
+    case Monday
+    case Tuesday
+    case Wednesday
+    case Thursday
+    case Friday
+    case Saturday
+}
+
 struct EventLocation {
     let title: String
     let latitude: Double
@@ -147,6 +157,9 @@ public class CalendarView: UIView {
     public var multipleSelectionEnable = true
     public var enableDeselection = true
     public var marksWeekends = true
+    
+    public var primaryDeliveryDay: DayOfWeek?
+    public var secondaryDeliveryDay: DayOfWeek?
     
     public var delegate: CalendarViewDelegate?
     public var dataSource: CalendarViewDataSource?

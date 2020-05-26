@@ -46,7 +46,6 @@ class ViewController: UIViewController {
         style.cellColorDefault         = UIColor.clear
         style.cellColorToday           = UIColor(red:1.00, green:0.84, blue:0.64, alpha:1.00)
         style.cellSelectedBorderColor  = UIColor(red:1.00, green:0.63, blue:0.24, alpha:1.00)
-        style.cellEventColor           = UIColor(red:1.00, green:0.63, blue:0.24, alpha:1.00)
         style.headerTextColor          = UIColor.gray
         
         style.cellTextColorDefault     = UIColor(red: 249/255, green: 180/255, blue: 139/255, alpha: 1.0)
@@ -65,6 +64,11 @@ class ViewController: UIViewController {
         style.weekdaysFont = UIFont(name: "Helvetica", size: 14.0) ?? UIFont.systemFont(ofSize: 14.0)
         
         calendarView.style = style
+
+        calendarView.style.primaryDeliveryDayColor = UIColor.green
+        calendarView.style.secondaryDeliveryDayColor = UIColor.black
+        calendarView.primaryDeliveryDay = .Monday
+        calendarView.secondaryDeliveryDay = .Thursday
         
         calendarView.dataSource = self
         calendarView.delegate = self

@@ -104,6 +104,25 @@ open class CalendarDayCell: UICollectionViewCell {
         }
     }
     
+    
+    var isPrimaryDeliveryDay: Bool = false {
+        didSet {
+            if( self.isPrimaryDeliveryDay ) { self.dotsView.backgroundColor = self.style.primaryDeliveryDayColor }
+            self.dotsView.isHidden = !self.isPrimaryDeliveryDay && !self.isSecondaryDeliveryDay
+            self.setNeedsLayout()
+        }
+    }
+    
+    
+    var isSecondaryDeliveryDay: Bool = false {
+        didSet {
+            if( self.isSecondaryDeliveryDay ) { self.dotsView.backgroundColor = self.style.secondaryDeliveryDayColor }
+            
+            self.dotsView.isHidden = !self.isPrimaryDeliveryDay && !self.isSecondaryDeliveryDay
+            self.setNeedsLayout()
+        }
+    }
+    
     override open var isSelected : Bool {
         didSet {
             switch isSelected {

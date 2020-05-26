@@ -232,7 +232,18 @@ extension CalendarView: UICollectionViewDataSource {
             dayCell.isWeekend = we == weekDayOption || we == 6
         }
         
-        dayCell.eventsCount = self.eventsByIndexPath[indexPath]?.count ?? 0
+        // see if this is primary or secondary delivery day
+        let currDayOfWeek = DayOfWeek(rawValue: indexPath.item % 7)
+        if( (self.primaryDeliveryDay != nil) && (currDayOfWeek == self.primaryDeliveryDay) ) {
+            dayCell.isPrimaryDeliveryDay = true
+            dayCell.isSecondaryDeliveryDay = false
+        } else if( (self.secondaryDeliveryDay != nil) && (currDayOfWeek == self.secondaryDeliveryDay) ) {
+            dayCell.isPrimaryDeliveryDay = false
+            dayCell.isSecondaryDeliveryDay = true
+        } else {
+            dayCell.isPrimaryDeliveryDay = false
+            dayCell.isSecondaryDeliveryDay = false
+        }
         
         return dayCell
     }
